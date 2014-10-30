@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+    <!--
+  * Please see the included README.md file for license terms and conditions.
+  -->
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="app_framework/2.1/css/af.ui.min.css">
+        <link rel="stylesheet" type="text/css" href="app_framework/2.1/css/icons.min.css">
+
+        <script src="js/Finder.js"></script>
+        <script src="intelxdk.js" type="text/javascript"></script>
+
+        <meta charset="UTF-8">
+        <title>Blank App Designer Project Template</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+        <!--
+  * The "meta viewport" tag (below) helps your app size appropriately to a device's screen.
+  * Note that the meta viewport approach is being phased out in favor of the @viewport CSS rule.
+  * For a quick overview of both, see this article:
+  *   http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag
+  * To see what happens, try the app on a real device with and without a "meta viewport" tag.
+-->
+
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
+
+        <style>
+            /* following three (cascaded) are equivalent to above three meta viewport statements */
+            /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
+            /* see http://dev.w3.org/csswg/css-device-adapt/ */
+                @-ms-viewport { width: 100vw ; zoom: 100% ; }                           @viewport { width: 100vw ; zoom: 100% ; }
+                @-ms-viewport { user-zoom: fixed ; }                                    @viewport { user-zoom: fixed ; }
+                /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+        </style>
+
+        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+
+        <!-- IMPORTANT: Do not include your weinre script tag as part of your release builds! -->
+        <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work below -->
+        <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+
+        <!-- Most third-party libraries should go here. References (below) are just examples to give you the general idea... -->
+        <!-- <script src="lib/mc/hammer.js"></script> -->
+        <!-- <script src="lib/ft/fastclick.js"></script> -->
+
+        <script src="intelxdk.js"></script>
+        <!-- phantom library, needed for XDK "legacy" container api calls -->
+        <script src="cordova.js"></script>
+        <!-- phantom library, needed for Cordova api calls -->
+        <script src="xhr.js"></script>
+        <!-- phantom library, needed for XDK "legacy" container CORS -->
+
+        <script src="js/app.js"></script>
+        <!-- for your event code, see README and file comments for details -->
+        <script src="js/init-app.js"></script>
+        <!-- for your init code, see README and file comments for details -->
+        <script src="xdk/init-dev.js"></script>
+        <!-- normalizes device and document ready events, see file for details -->
+        <!--                        
+                        You may substitute jQuery for the App Framework selector library.
+                        See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
+                -->
+        <script type="application/javascript" src="app_framework/2.1/appframework.js"></script>
+        <script type="application/javascript" src="app_framework/2.1/appframework.ui.js" data-ver="1"></script>
+        <!--            
+            You may substitute jQuery for the App Framework selector library.
+            See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
+        -->
+        <script type="application/javascript" src="js/jquery.min.js"></script>
+        <script type="application/javascript" src="sidebar/js/jquery.event.move.js"></script>
+        <script type="application/javascript" src="sidebar/js/jquery.event.swipe.js"></script>
+        <script type="application/javascript" src="sidebar/js/sidebar.js"></script>
+        <script type="application/javascript" src="sidebar/js/swipe.js"></script>
+        <script type="application/javascript" src="xdk/appdesigner/js/rest-of-space.js"></script>
+        <script type="application/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+        <!--            
+            You may substitute jQuery for the App Framework selector library.
+            See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
+        -->
+        <script type="application/javascript" src="google_maps/google_maps.js"></script>
+    </head>
+
+    <body id="afui" class="" onload="onPageLoad()">
+
+        <!-- IMPORTANT: Do not include your weinre script tag as part of your release builds! -->
+        <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work above -->
+        <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+        <div class="uwrap" id="content">
+            <div class="upage panel" id="mainpage" data-header="none" data-footer="none">
+                <div class="upage-outer">
+                    <div class="upage-content" id="mainsub">
+
+                        <div class="grid grid-pad urow uib_row_5 row-height-5" data-uib="layout/row" data-ver="0">
+                            <div class="col uib_col_7 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                <div class="widget-container content-area vertical-col">
+
+                                    <div class="widget uib_w_17 d-margins Header-Test HeaderMargins" data-uib="media/text" data-ver="0" id="Header-Sortenfinder">
+                                        <div class="widget-container left-receptacle"></div>
+                                        <div class="widget-container right-receptacle"></div>
+                                        <div>
+                                            <p>Sorten Finder</p>
+                                        </div>
+                                    </div><span class="uib_shim"></span>
+                                </div>
+                            </div>
+                            <span class="uib_shim"></span>
+                        </div>
+                        <div class="grid grid-pad urow uib_row_4 Questi" data-uib="layout/row" data-ver="0">
+                            <div class="col uib_col_5 col-0_10-12" data-uib="layout/col" data-ver="0">
+                                <div class="widget-container content-area vertical-col left">
+
+                                    <div class="table-thing with-label widget uib_w_1 d-margins" data-uib="app_framework/radio_button_group" data-ver="1" data-child-name="af-group-0" id="Question1">
+                                        <label class="narrow-control label-top-left">Erste Frage</label>
+                                        <div class="wide-control">
+                                            <div class="widget uib_w_2" data-uib="app_framework/radio_button" data-ver="1">
+                                                <input type="radio" id="af-radio-0" name="af-group-0" onclick="question1Answered(1)">
+                                                <label class="content-box" for="af-radio-0">Radio</label>
+                                            </div>
+                                            <div class="widget uib_w_3" data-uib="app_framework/radio_button" data-ver="1">
+                                                <input type="radio" id="af-radio-1" name="af-group-0" onclick="question1Answered(2)">
+                                                <label class="content-box" for="af-radio-1">Radio</label>
+                                            </div>
+                                            <div class="widget uib_w_4" data-uib="app_framework/radio_button" data-ver="1">
+                                                <input type="radio" id="af-radio-2" name="af-group-0" onclick="question1Answered(3)">
+                                                <label class="content-box" for="af-radio-2">Radio</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-thing with-label widget uib_w_5 d-margins NoVisibilityandSpacing" data-uib="app_framework/radio_button_group" data-ver="1" data-child-name="af-group-1" id="Question2">
+                                        <label class="narrow-control label-top-left">Zweite Frage</label>
+                                        <div class="wide-control">
+                                            <div class="widget uib_w_6" data-uib="app_framework/radio_button" data-ver="1">
+                                                <input type="radio" id="af-radio-3" name="af-group-1" onclick="question2Answered(1)">
+                                                <label class="content-box" for="af-radio-3">Radio</label>
+                                            </div>
+                                            <div class="widget uib_w_7" data-uib="app_framework/radio_button" data-ver="1">
+                                                <input type="radio" id="af-radio-4" name="af-group-1" onclick="question2Answered(2)">
+                                                <label class="content-box" for="af-radio-4">Radio</label>
+                                            </div>
+                                            <div class="widget uib_w_8" data-uib="app_framework/radio_button" data-ver="1">
+                                                <input type="radio" id="af-radio-5" name="af-group-1" onclick="question2Answered(3)">
+                                                <label class="content-box" for="af-radio-5">Radio</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-thing with-label widget uib_w_9 d-margins NoVisibilityandSpacing" data-uib="app_framework/radio_button_group" data-ver="1" data-child-name="af-group-2" id="Question3">
+                                        <label class="narrow-control label-top-left">Dritte Frage</label>
+                                        <div class="wide-control">
+                                            <div class="widget uib_w_10" data-uib="app_framework/radio_button" data-ver="1">
+                                                <input type="radio" id="af-radio-6" name="af-group-2" onclick="question3Answered(1)">
+                                                <label class="content-box" for="af-radio-6">Radio</label>
+                                            </div>
+                                            <div class="widget uib_w_11" data-uib="app_framework/radio_button" data-ver="1">
+                                                <input type="radio" id="af-radio-7" name="af-group-2" onclick="question3Answered(2)">
+                                                <label class="content-box" for="af-radio-7">Radio</label>
+                                            </div>
+                                            <div class="widget uib_w_12" data-uib="app_framework/radio_button" data-ver="1">
+                                                <input type="radio" id="af-radio-8" name="af-group-2" onclick="question3Answered(3)">
+                                                <label class="content-box" for="af-radio-8">Radio</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-thing with-label widget uib_w_13 d-margins NoVisibilityandSpacing" data-uib="app_framework/radio_button_group" data-ver="1" data-child-name="af-group-3" id="Question4">
+                                        <label class="narrow-control label-top-left">Vierte Frage</label>
+
+                                        <div class="wide-control">
+                                            <div class="widget uib_w_14" data-uib="app_framework/radio_button" data-ver="1">
+                                                <input type="radio" id="af-radio-9" name="af-group-3" onclick="question4Answered(1)">
+                                                <label class="content-box" for="af-radio-9">Radio</label>
+                                            </div>
+                                            <div class="widget uib_w_15" data-uib="app_framework/radio_button" data-ver="1">
+                                                <input type="radio" id="af-radio-10" name="af-group-3" onclick="question4Answered(2)">
+                                                <label class="content-box" for="af-radio-10">Radio</label>
+                                            </div>
+                                            <div class="widget uib_w_16" data-uib="app_framework/radio_button" data-ver="1">
+                                                <input type="radio" id="af-radio-11" name="af-group-3" onclick="question4Answered(3)">
+                                                <label class="content-box" for="af-radio-11">Radio</label>
+                                            </div>
+                                        </div>
+                                    </div><span class="uib_shim"></span>
+                                </div>
+                            </div>
+                            <div class="col uib_col_10 col-0_2-12" data-uib="layout/col" data-ver="0">
+                                <div class="widget-container content-area vertical-col">
+
+                                    <div class="widget uib_w_18 scale-image d-margins NoVisibilityandSpacing" data-uib="media/img" data-ver="0" id="Question1Pic">
+                                        <figure class="figure-align">
+                                            <img src="images/Checkmark.png">
+
+                                            <figcaption data-position="bottom"></figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="widget uib_w_19 scale-image d-margins NoVisibilityandSpacing" data-uib="media/img" data-ver="0" id="Question2Pic">
+                                        <figure class="figure-align">
+                                            <img src="images/Checkmark.png">
+
+                                            <figcaption data-position="bottom"></figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="widget uib_w_20 scale-image d-margins NoVisibilityandSpacing" data-uib="media/img" data-ver="0" id="Question3Pic">
+                                        <figure class="figure-align">
+                                            <img src="images/Checkmark.png">
+
+                                            <figcaption data-position="bottom"></figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="widget uib_w_21 scale-image d-margins NoVisibilityandSpacing" data-uib="media/img" data-ver="0" id="Question4Pic">
+                                        <figure class="figure-align">
+                                            <img src="images/Checkmark.png">
+
+                                            <figcaption data-position="bottom"></figcaption>
+                                        </figure>
+                                    </div><span class="uib_shim"></span>
+                                </div>
+                            </div>
+                            <span class="uib_shim"></span>
+                        </div>
+
+                        <div class="grid grid-pad urow uib_qqrow_6 row-height-6 Questi" data-uib="layout/row" data-ver="0">
+                            <div class="col uib_col_8 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                <div class="widget-container content-area vertical-col">
+
+                                    <div class="widget uib_w_22 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                        <figure class="figure-align">
+                                            <img src="images/Arrow.png">
+                                            <figcaption data-position="bottom"></figcaption>
+                                        </figure>
+                                    </div><span class="uib_shim">
+                                    </span>
+                                </div>
+                            </div>
+                            <span class="uib_shim"></span>
+                        </div>
+                    </div>
+                    <!-- /upage-content -->
+
+                </div>
+                <!-- /upage-outer -->
+
+            </div>
+            <!-- /upage -->
+
+        </div>
+        <!-- /uwrap -->
+    </body>
+
+</html>
